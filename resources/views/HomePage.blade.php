@@ -33,15 +33,15 @@
                     @endforeach
                 </div>
                 <div class="w-2/4 bg-amber-900 border-solid border-2 border-yellow-600">
-                    <h1 class="mt-4 text-center text-2xl font-bold"> Play the game </h1>
+                    <h1 class="mt-4 text-center text-2xl font-bold "> Play the game </h1>
                     <div class="flex justify-center">
                         <a href="./SignUp" class="flex items-center">
-                            <div class="m-10 p-16 bg-yellow-600 hover:bg-green-600 flex items-center justify-center h-48 w-60">
+                            <div class="m-10 p-16 rounded-xl bg-yellow-600 hover:bg-green-600 flex items-center justify-center h-48 w-24">
                                 <p class="text-center"> New Player? Sign Up! </p>
                             </div>
                         </a>
                         <a href="./SignIn" class="flex items-center">
-                            <div class="m-10 p-16 bg-yellow-600 hover:bg-green-600 flex items-center justify-center h-48 w-60">
+                            <div class="m-10 p-16 rounded-xl bg-yellow-600 hover:bg-green-600 flex items-center justify-center h-48 w-24">
                                 <p class="text-center"> Play now <br/> </p>
                             </div>
                         </a>

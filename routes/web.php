@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Listing;
 use App\Models\players;
 use App\Http\Controllers\PlayerController;
+use Illuminate\Support\Facades\Password;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,18 +71,35 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/SignIn', [PlayerController::class, 'showFormSignIn']);
     Route::get('/SignOut', [PlayerController::class, 'signOut']);
     Route::Post('/SignIn', [PlayerController::class, 'processSignIn']);
-    Route::Post('/SendMail', [MailController::class, 'sendMail']);
+    Route::Post('/SendMail', [PlayerController::class, 'showChangePassword']);
+    Route::Get('/ChangePassword',function() {
+        return view("ChangePassword");
+    });
+    Route::Get('/ChangePassword/{token}',function($token) {
+        return view("ForgetPassword",["token" => $token]);
+    });
+    Route::Post('/ResetPassword',[PlayerController::class,'resetPassword']);
+    Route::Post('/ChangePassword',[PlayerController::class,'changePassword']);
     
 });
+
 Route::get('/Ask', function() {
     return view('Ask');
 });
+Route::get('/HighScore', function() {
+    $topPlayers = players::select('name', 'score')
+    ->orderBy('score', 'desc')
+    ->limit(50)
+    ->get();
+    return view('Hiscores',[
+        "players"=> $topPlayers
+    ]);
+});
+
 Route::get('/SubmitBug', function() {
     return view('SubmitBug');
 });
-// Route::get('/', function () {
-//     return view('layout');
-// });
+
 Route::get('/hello', function () {
     return response("hello");
 });
